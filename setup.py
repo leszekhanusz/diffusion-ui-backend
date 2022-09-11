@@ -10,7 +10,11 @@ dev_requires = [
     "black==22.3.0",
     "check-manifest>=0.42,<1",
     "flake8==3.8.1",
-    "isort==4.3.21",
+    "isort==5.10.1",
+]
+
+console_scripts = [
+    "diffusionui=diffusionui.cli:diffusionui_cli",
 ]
 
 # Get version from __version__.py file
@@ -59,4 +63,5 @@ setup(
     python_requires=">=3.6.0",
     zip_safe=False,
     platforms="any",
+    entry_points={"console_scripts": console_scripts},
 )

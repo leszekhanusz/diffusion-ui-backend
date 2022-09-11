@@ -6,6 +6,8 @@ include Makefile
 include tox.ini
 
 recursive-include *.py
+
+include src/diffusionui/pipelines/README.md
 include src/diffusionui/py.typed
 
 global-exclude *.py[co] __pycache__
