@@ -13,6 +13,10 @@ dev_requires = [
     "isort==4.3.21",
 ]
 
+console_scripts = [
+    "diffusionui=diffusionui.cli:diffusionui_cli",
+]
+
 # Get version from __version__.py file
 current_folder = os.path.abspath(os.path.dirname(__file__))
 about = {}
@@ -59,4 +63,5 @@ setup(
     python_requires=">=3.6.0",
     zip_safe=False,
     platforms="any",
+    entry_points={"console_scripts": console_scripts},
 )
