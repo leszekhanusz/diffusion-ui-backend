@@ -2,7 +2,7 @@ import gradio as gr
 from torch import autocast
 
 
-def make_gradio_interface(pipe):
+def make_gradio_interface(pipe, nsfw_filter=True):
     def run_pipe(
         *,
         prompt,
@@ -22,7 +22,7 @@ def make_gradio_interface(pipe):
                 strength=strength,
                 guidance_scale=guidance_scale,
                 num_inference_steps=nb_steps,
-                nsfw_filter=True,
+                nsfw_filter=nsfw_filter,
             )["sample"]
 
             return images

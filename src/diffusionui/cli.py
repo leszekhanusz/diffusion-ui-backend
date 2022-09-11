@@ -42,6 +42,13 @@ using the same interface.
         default="CompVis/stable-diffusion-v1-4",
     )
 
+    parser.add_argument(
+        "--disable-nsfw-filter",
+        help="Disable the NSFW filter",
+        action="store_true",
+        dest="disable_nsfw_filter",
+    )
+
     return parser
 
 
@@ -54,6 +61,7 @@ def diffusionui_cli():
     print("DiffusionUI started with:")
     print(f"  low_mem: {args.low_mem}")
     print(f"  download_model: {args.download_model}")
+    print(f"  nsfw_filter: {not(args.disable_nsfw_filter)}")
     print("")
 
     # Set the pipe arguments depending on options selected
@@ -74,7 +82,7 @@ def diffusionui_cli():
     ).to("cuda")
 
     # Generate gradio interface
-    gradio_interface = make_gradio_interface(pipe)
+    gradio_interface = make_gradio_interface(pipe, nsfw_filter=not (args.disable_nsfw_filter))
 
     # Start it
     gradio_interface.launch()
