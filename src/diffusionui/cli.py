@@ -61,7 +61,7 @@ def diffusionui_cli():
     print("DiffusionUI started with:")
     print(f"  low_mem: {args.low_mem}")
     print(f"  download_model: {args.download_model}")
-    print(f"  nsfw_filter: {not(args.disable_nsfw_filter)}")
+    print(f"  disable_nsfw_filter: {args.disable_nsfw_filter}")
     print("")
 
     # Set the pipe arguments depending on options selected
@@ -81,8 +81,12 @@ def diffusionui_cli():
         **pipe_args,
     ).to("cuda")
 
+    # Disable the nsfw filter if requested
+    if args.disable_nsfw_filter:
+        pipe.disable_nsfw_filter()
+
     # Generate gradio interface
-    gradio_interface = make_gradio_interface(pipe, nsfw_filter=not (args.disable_nsfw_filter))
+    gradio_interface = make_gradio_interface(pipe)
 
     # Start it
     gradio_interface.launch()
