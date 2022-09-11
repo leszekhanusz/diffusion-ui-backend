@@ -3,7 +3,7 @@ import os
 from setuptools import find_packages, setup
 
 install_requires = [
-    "diffusers==0.2.4",
+    "diffusers==0.3.0",
     "gradio>=3.1.6",
 ]
 
