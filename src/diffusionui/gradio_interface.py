@@ -22,7 +22,7 @@ def make_gradio_interface(pipe):
                 strength=strength,
                 guidance_scale=guidance_scale,
                 num_inference_steps=nb_steps,
-            )["sample"]
+            ).images
 
             return images
 
