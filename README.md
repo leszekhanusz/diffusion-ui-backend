@@ -11,7 +11,7 @@ The gradio interface provides an API to generate images with [Stable Diffusion](
 
 ## Installation
 
-First install [pytorch](pytorch.org) with cuda support (if you have a NVIDIA GPU):
+First install [pytorch](https://pytorch.org) with cuda support (if you have a NVIDIA GPU):
 
 ```
 conda install pytorch torchvision torchaudio cudatoolkit=11.6 -c pytorch -c conda-forge
