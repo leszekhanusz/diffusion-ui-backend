@@ -58,12 +58,6 @@ def diffusionui_cli():
     parser = get_parser()
     args = parser.parse_args()
 
-    print("DiffusionUI started with:")
-    print(f"  low_mem: {args.low_mem}")
-    print(f"  download_model: {args.download_model}")
-    print(f"  disable_nsfw_filter: {args.disable_nsfw_filter}")
-    print("")
-
     # Set the pipe arguments depending on options selected
     pipe_args = {
         "device": "cuda",
