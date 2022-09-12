@@ -5,6 +5,7 @@ from setuptools import find_packages, setup
 install_requires = [
     "diffusers==0.3.0",
     "gradio>=3.1.6",
+    "transformers>=4.21.3",
 ]
 
 dev_requires = [
