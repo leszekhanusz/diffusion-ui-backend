@@ -28,6 +28,7 @@ pip install diffusionui
 The first time, you have to download the model:
 
 - create an account on https://huggingface.co
+- [Click on this page to accept the LICENSE](https://huggingface.co/CompVis/stable-diffusion-v1-4)
 - [generate a token in your settings](https://huggingface.co/docs/hub/security-tokens)
 - login on your console with `huggingface-cli login`
 - then download the model with:
