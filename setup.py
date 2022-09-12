@@ -11,6 +11,9 @@ install_requires = [
 dev_requires = [
     "black==22.3.0",
     "check-manifest>=0.42,<1",
+    "sphinx>=5.1.1,<6",
+    "sphinx_rtd_theme==1.0.0",
+    "sphinx_tabs==3.4.1",
     "flake8==3.8.1",
     "isort==5.10.1",
 ]
