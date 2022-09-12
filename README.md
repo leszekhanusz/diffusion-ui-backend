@@ -11,6 +11,14 @@ The gradio interface provides an API to generate images with [Stable Diffusion](
 
 ## Installation
 
+First install [pytorch](https://pytorch.org) with cuda support (if you have a NVIDIA GPU):
+
+```
+conda install pytorch torchvision torchaudio cudatoolkit=11.6 -c pytorch -c conda-forge
+```
+
+Then install diffusionui and its dependencies:
+
 ```bash
 pip install diffusionui
 ```
@@ -25,6 +33,10 @@ The first time, you have to download the model:
 - then download the model with:
 
 ```bash
+# using the low-memory model (for GPUs with low VRAM)
+diffusionui --low-mem --download-model
+
+# or using the full model
 diffusionui --download-model
 ```
 
@@ -33,7 +45,11 @@ diffusionui --download-model
 Once the model has been downloaded, you can start the backend by running:
 
 ```bash
+# For the low-memory model
 diffusionui --low-mem
+
+# For the full model
+diffusionui --download-model
 ```
 
 It should produce an local URL for the gradio interface:
