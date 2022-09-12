@@ -49,7 +49,7 @@ Once the model has been downloaded, you can start the backend by running:
 diffusionui --low-mem
 
 # For the full model
-diffusionui --download-model
+diffusionui
 ```
 
 It should produce an local URL for the gradio interface:
