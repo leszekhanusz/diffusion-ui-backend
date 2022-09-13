@@ -1,5 +1,7 @@
 import gradio as gr
 from torch import autocast
+import logging
+from .__version__ import __api_version__
 
 
 def make_gradio_interface(pipe):
@@ -27,14 +29,28 @@ def make_gradio_interface(pipe):
             return images
 
     def gradio_run(
+        api_version,
         prompt,
         init_image,
         mask_image,
-        nb_images=1,
-        nb_steps=50,
-        strength=1,
-        guidance_scale=0.75,
+        nb_images,
+        nb_steps,
+        strength,
+        guidance_scale,
     ):
+
+        if api_version != __api_version__:
+            logging.warning(
+                f"Backend API version ({__api_version__}) is different than "
+                f"frontend API version ({api_version})."
+            )
+
+            if api_version > __api_version__:
+
+                logging.warning(
+                    "You should update the backend by running "
+                    "'pip install diffusionui --upgrade'"
+                )
 
         images = []
 
@@ -56,7 +72,8 @@ def make_gradio_interface(pipe):
     gradio_interface = gr.Interface(
         gradio_run,
         inputs=[
-            gr.Textbox(),
+            gr.Number(label="API Version", value=__api_version__, visible=False),
+            gr.Textbox(label="Prompt"),
             gr.Image(type="pil", label="Init image"),
             gr.Image(type="pil", label="Mask image"),
             gr.Slider(minimum=1, maximum=4, value=2, step=1, label="Number of images"),
