@@ -16,6 +16,7 @@ recursive-include docs *.py
 recursive-include docs *.rst
 recursive-include docs Makefile
 include docs/requirements.txt
+include *.yaml
 
 prune docs/_build
 
