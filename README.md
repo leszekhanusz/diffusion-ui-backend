@@ -9,7 +9,13 @@ The gradio interface provides an API to generate images with [Stable Diffusion](
 - image-to-image
 - inpainting
 
+## Documentation
+
+The documentation is available [here](https://diffusionui.readthedocs.io)
+
 ## Installation
+
+Detailled installation instructions are available [in the documentation](https://diffusionui.readthedocs.io/en/latest/backends/stable-diffusion.html).
 
 First install [pytorch](https://pytorch.org) with cuda support (if you have a NVIDIA GPU):
 
