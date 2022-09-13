@@ -10,4 +10,13 @@ recursive-include *.py
 include src/diffusionui/pipelines/README.md
 include src/diffusionui/py.typed
 
+include *.md
+recursive-include docs *.bat
+recursive-include docs *.py
+recursive-include docs *.rst
+recursive-include docs Makefile
+include docs/requirements.txt
+
+prune docs/_build
+
 global-exclude *.py[co] __pycache__

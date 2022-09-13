@@ -16,3 +16,8 @@ clean:
 	rm -rf ./dist
 	rm -rf ./build
 	rm -rf ./.tox
+	rm -rf ./docs/_build
+
+docs:
+	rm -rf ./docs/_build
+	cd docs; make html
