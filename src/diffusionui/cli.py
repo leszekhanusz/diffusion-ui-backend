@@ -1,3 +1,5 @@
+import logging
+import time
 from argparse import ArgumentParser
 
 import torch
@@ -83,4 +85,13 @@ def diffusionui_cli():
     gradio_interface = make_gradio_interface(pipe)
 
     # Start it
-    gradio_interface.launch()
+    SERVER_PORT = 7860
+    while True:
+        try:
+            gradio_interface.launch(server_port=SERVER_PORT)
+        except OSError as e:
+            if str(e).startswith(f"Port {SERVER_PORT} is in use"):
+                logging.warning(f"Port {SERVER_PORT} is in use. Trying again in 5 seconds.")
+                time.sleep(5)
+                continue
+        break
