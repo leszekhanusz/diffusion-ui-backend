@@ -17,6 +17,7 @@ clean:
 	rm -rf ./build
 	rm -rf ./.tox
 	rm -rf ./docs/_build
+	rm -rf ./flagged
 
 docs:
 	rm -rf ./docs/_build
