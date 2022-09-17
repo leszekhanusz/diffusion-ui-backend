@@ -112,7 +112,7 @@ def make_gradio_interface(pipe, access_code):
             gr.Slider(minimum=0, maximum=1, value=0.5, label="Strength"),
             gr.Slider(minimum=0, maximum=20, value=7.5, label="Guidance scale"),
             gr.Textbox(label="Seeds"),
-            gr.Textbox(label="Access code"),
+            gr.Textbox(label="Access code", visible=access_code is not None),
         ],
         outputs=[
             gr.Gallery(label="Images"),
