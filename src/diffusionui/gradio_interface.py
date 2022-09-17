@@ -7,7 +7,7 @@ from torch import autocast
 from .__version__ import __api_version__
 
 
-def make_gradio_interface(pipe):
+def make_gradio_interface(pipe, access_code):
     def run_pipe(
         *,
         prompt,
@@ -47,7 +47,12 @@ def make_gradio_interface(pipe):
         strength,
         guidance_scale,
         seeds,
+        provided_access_code,
     ):
+
+        if access_code:
+            if provided_access_code != access_code:
+                raise Exception("Incorrect access code")
 
         if api_version != __api_version__:
             logging.warning(
@@ -107,6 +112,7 @@ def make_gradio_interface(pipe):
             gr.Slider(minimum=0, maximum=1, value=0.5, label="Strength"),
             gr.Slider(minimum=0, maximum=20, value=7.5, label="Guidance scale"),
             gr.Textbox(label="Seeds"),
+            gr.Textbox(label="Access code", visible=access_code is not None),
         ],
         outputs=[
             gr.Gallery(label="Images"),

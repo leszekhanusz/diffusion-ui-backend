@@ -51,6 +51,27 @@ using the same interface.
         dest="disable_nsfw_filter",
     )
 
+    parser.add_argument(
+        "--share",
+        help="Create a link to be able to run your model from elsewhere",
+        action="store_true",
+        dest="share",
+    )
+
+    parser.add_argument(
+        "--auth",
+        type=str,
+        help='gradio authentication. "username:password" or more "user1:pass1,user2:pass2"',
+        default=None,
+    )
+
+    parser.add_argument(
+        "--access-code",
+        type=str,
+        help="Optional access code to limit access to the model without using gradio auth",
+        default=None,
+    )
+
     return parser
 
 
@@ -82,13 +103,21 @@ def diffusionui_cli():
         pipe.disable_nsfw_filter()
 
     # Generate gradio interface
-    gradio_interface = make_gradio_interface(pipe)
+    gradio_interface = make_gradio_interface(pipe, access_code=args.access_code)
+
+    if not args.share:
+        print("\nTo create a public link, use --share")
 
     # Start it
     SERVER_PORT = 7860
     while True:
         try:
-            gradio_interface.launch(server_port=SERVER_PORT)
+            gradio_interface.launch(
+                server_port=SERVER_PORT,
+                quiet=True,
+                share=args.share,
+                auth=[tuple(cred.split(":")) for cred in args.auth.strip('"').split(",")] if args.auth else None,
+            )
         except OSError as e:
             if str(e).startswith(f"Port {SERVER_PORT} is in use"):
                 logging.warning(f"Port {SERVER_PORT} is in use. Trying again in 5 seconds.")
