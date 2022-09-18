@@ -8,7 +8,7 @@ Installation
 
     .. tab:: Linux
 
-        - Install conda if it is not already installed
+        - Install `conda`_ if it is not already installed
 
         - Create an environment named **dui**:
 
@@ -135,15 +135,42 @@ It should produce an local URL for the gradio interface:
     Running on local URL:  http://127.0.0.1:7860/
 
 
-.. warning::
-
-    The port number at the end of the url should be 7860.
-    Sometimes if you stop the program and start it again shortly after,
-    then the port number will change to 7861.
-
-    If that happens, simply try again until the port number is 7860 once again.
-
 Once you have this local URL, congratulations 🚀 !
 You can now visit https://diffusionui.com to access it with the nice interface.
 
 .. _conda: https://docs.conda.io
+
+Sharing
+^^^^^^^
+
+It is possible to use Diffusion-UI on your smartphone, tablet or other computer by
+sharing the backend on your PC.
+
+To share the backend:
+
+* use :code:`--share` to get a public url that can be used from an external device
+* optionaly use :code:`--access-code` to specify a required code to access the model
+
+.. code-block:: bash
+
+    diffusionui --low-mem --share --access-code 1234
+
+You'll receive something like this:
+
+.. code-block::
+
+    Running on local URL:  http://127.0.0.1:7860/
+    Running on public URL: https://16141.gradio.app
+
+Then, from your smartphone or tablet:
+
+* go to http://diffusionui.com
+* open the left panel with the top-left icon
+* Click on the API URL and change it by replacing the hostname by the provided public URL
+  (:code:`https://16141.gradio.app/api/predict` in this example)
+* Below, insert the access code if needed
+
+Once you've done this, you can use it on this device.
+The url and access code is saved in Local Storage in your browser so you need to do this only once.
+
+You can now show this amazing technology to all your friends!
