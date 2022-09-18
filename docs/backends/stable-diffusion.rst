@@ -165,7 +165,7 @@ You'll receive something like this:
 Then, from your smartphone or tablet:
 
 * go to http://diffusionui.com
-* open the left panel with the top-left icon
+* open the left panel with the top-left icon, then open the model info tab (ⓘ)
 * Click on the API URL and change it by replacing the hostname by the provided public URL
   (:code:`https://16141.gradio.app/api/predict` in this example)
 * Below, insert the access code if needed
