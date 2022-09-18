@@ -22,3 +22,4 @@ clean:
 docs:
 	rm -rf ./docs/_build
 	cd docs; make html
+	xdg-open ./docs/_build/html/index.html
