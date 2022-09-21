@@ -1,4 +1,6 @@
+import hashlib
 import logging
+import os
 
 import gradio as gr
 import torch
@@ -7,7 +9,7 @@ from torch import autocast
 from .__version__ import __api_version__
 
 
-def make_gradio_interface(pipe, access_code):
+def make_gradio_interface(pipe, access_code, output_dir):
     def run_pipe(
         *,
         prompt,
@@ -35,7 +37,7 @@ def make_gradio_interface(pipe, access_code):
                 generator=generator,
             ).images
 
-            return images
+        return images
 
     def gradio_run(
         api_version,
@@ -97,6 +99,20 @@ def make_gradio_interface(pipe, access_code):
             all_generated_images.extend(generated_images)
 
         seeds_str = ",".join([str(seed) for seed in seeds])
+
+        if output_dir is not None:
+
+            if not os.path.exists(output_dir):
+                logging.warning(f"Path {output_dir} does not exist. Images are not saved.")
+
+            else:
+                for index, image in enumerate(all_generated_images):
+                    seed = seeds[index]
+                    hash_image = hashlib.sha1(image.tobytes()).hexdigest()
+                    filename = f"{seed}_{hash_image}.png"
+                    filepath = os.path.join(output_dir, filename)
+
+                    image.save(filepath)
 
         return all_generated_images, seeds_str
 

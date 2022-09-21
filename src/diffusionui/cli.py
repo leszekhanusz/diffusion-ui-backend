@@ -72,6 +72,13 @@ using the same interface.
         default=None,
     )
 
+    parser.add_argument(
+        "--output-dir",
+        type=str,
+        help="Optional path of the folder where images are stored. By default images are not saved.",
+        default=None,
+    )
+
     return parser
 
 
@@ -103,7 +110,11 @@ def diffusionui_cli():
         pipe.disable_nsfw_filter()
 
     # Generate gradio interface
-    gradio_interface = make_gradio_interface(pipe, access_code=args.access_code)
+    gradio_interface = make_gradio_interface(
+        pipe,
+        access_code=args.access_code,
+        output_dir=args.output_dir,
+    )
 
     if not args.share:
         print("\nTo create a public link, use --share")
