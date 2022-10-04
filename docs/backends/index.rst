@@ -6,3 +6,4 @@ Backends
 
    stable-diffusion
    automatic1111
+   stable-horde
