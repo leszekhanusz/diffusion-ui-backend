@@ -28,3 +28,11 @@ Installation
     `Running on local URL:  http://127.0.0.1:7860/` appearing in the console.
     It happens that if you restart the webui too soon that the port is changed
     to 7861. In that case, wait a minute and start again until it's on port 7860
+
+.. warning::
+
+    It does not work with the brave browser by default and potentially some strict
+    adblockers. You'll need to deactivate the brave shield for this page.
+    Note that diffusion-ui does not use tracking of any kind, they just don't
+    like the fact that the backend config is downloaded from http://127.0.0.1:7860/config
+    I guess...
