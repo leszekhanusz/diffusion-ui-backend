@@ -13,6 +13,7 @@ def make_gradio_interface(pipe, access_code, output_dir):
     def run_pipe(
         *,
         prompt,
+        negative_prompt,
         init_image,
         mask_image,
         nb_steps,
@@ -29,6 +30,7 @@ def make_gradio_interface(pipe, access_code, output_dir):
         with autocast("cuda"):
             images = pipe(
                 prompt,
+                negative_prompt=negative_prompt,
                 init_image=init_image,
                 mask_image=mask_image,
                 strength=strength,
@@ -42,6 +44,7 @@ def make_gradio_interface(pipe, access_code, output_dir):
     def gradio_run(
         api_version,
         prompt,
+        negative_prompt,
         init_image,
         mask_image,
         nb_images,
@@ -87,6 +90,7 @@ def make_gradio_interface(pipe, access_code, output_dir):
 
             generated_images = run_pipe(
                 prompt=prompt,
+                negative_prompt=negative_prompt,
                 init_image=init_image,
                 mask_image=mask_image,
                 nb_steps=nb_steps,
@@ -121,6 +125,7 @@ def make_gradio_interface(pipe, access_code, output_dir):
         inputs=[
             gr.Number(label="API Version", value=__api_version__, visible=False),
             gr.Textbox(label="Prompt"),
+            gr.Textbox(label="Negative Prompt"),
             gr.Image(type="pil", label="Init image"),
             gr.Image(type="pil", label="Mask image"),
             gr.Slider(minimum=1, maximum=4, value=2, step=1, label="Number of images"),
