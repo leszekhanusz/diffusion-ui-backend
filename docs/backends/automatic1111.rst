@@ -1,5 +1,5 @@
-Automatic1111 fork
-==================
+Automatic1111
+=============
 
 Installation
 ^^^^^^^^^^^^
@@ -9,14 +9,16 @@ Installation
   You should be able to run its own webui interface by going to
   http://127.0.0.1:7860
 
-- Run :code:`git checkout master` and :code:`git pull -r` in the
+- Optionally run :code:`git checkout master` and :code:`git pull -r` in the
   `stable-diffusion-webui` folder to upgrade to the latest version
 
-- Launch the automatic1111 webui (on windows start the `webui.bat` script)
+- Add :code:`--cors-allow-origins=http://localhost:5173,https://diffusionui.com` to your
+  commandline arguments used to start the Automatic1111 fork.
+  (In the `webui-user.bat` file on Windows)
+
+- Launch the automatic1111 webui with those arguments (on windows start the `webui.bat` script)
 
 - Go to https://diffusionui.com
-
-- select :code:`Automatic1111` in the dropdown at the top of the left panel
 
 - click on the ⓘ  icon to go to the model info tab
 
