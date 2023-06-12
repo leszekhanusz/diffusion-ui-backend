@@ -1,4 +1,9 @@
-# diffusion-ui-backend
+## DEPRECATED
+
+This is repository is no longer maintained, please consider using
+[A1111 fork](https://github.com/AUTOMATIC1111/stable-diffusion-webui) instead.
+
+## diffusion-ui-backend
 
 [Gradio](https://gradio.app) backend for the [diffusion-ui](https://github.com/leszekhanusz/diffusion-ui) web frontend
 using an [unified Stable Diffusion diffusers pipeline](src/diffusionui/pipelines/README.md)

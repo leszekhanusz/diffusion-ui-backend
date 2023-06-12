@@ -1,5 +1,8 @@
-Stable Diffusion
-================
+Diffusion-ui-backend
+====================
+
+.. warning::
+   This backend is now obsolete and you should instead use the Automatic1111 backend.
 
 Installation
 ^^^^^^^^^^^^
