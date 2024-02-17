@@ -12,7 +12,7 @@ Installation
 - Optionally run :code:`git checkout master` and :code:`git pull -r` in the
   `stable-diffusion-webui` folder to upgrade to the latest version
 
-- Add :code:`--cors-allow-origins=http://localhost:5173,https://diffusionui.com` to your
+- Add :code:`--no-gradio-queue --cors-allow-origins=http://localhost:5173,https://diffusionui.com` to your
   commandline arguments used to start the Automatic1111 fork.
   (In the `webui-user.bat` file on Windows)
 
